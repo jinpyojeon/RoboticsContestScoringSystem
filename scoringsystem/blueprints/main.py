@@ -421,9 +421,10 @@ def validate_actual_time_compare(time_j1, time_j2):
     time_j1 = time_j1.strip()
     time_j2 = time_j2.strip()
 
-    if time_j1.isdigit() and time_j2.isdigit():
+    try:
         return float(time_j1) == float(time_j2)
-    return False
+    except ValueError:
+        return False
 
 # valide actual time
 def validate_actual_time(time_s, level, failed):
@@ -443,7 +444,6 @@ def validate_actual_time(time_s, level, failed):
     picked_baby_3 = 400  # failed but picked up baby (level 3)
 
     # check if input string is a number
-    
 
     # convet to a float
     try: 
@@ -483,7 +483,9 @@ def validate_actual_time(time_s, level, failed):
 # validate number of rooms
 def validate_num_rooms(num_s, level):
 
-    num_s = num_s.strip()
+    if num_s:
+        num_s = num_s.strip()
+    
     # minimum and maximum allowed values
     min_123 = 0
     max_123 = 4

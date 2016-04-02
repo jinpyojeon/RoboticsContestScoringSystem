@@ -18,7 +18,7 @@
             {% for run in robot_runs %}
                 <tr>
                     <td>{{ loop.index }}</td>
-                    <td>{{ "Falied" if run.get('failed_trial') == 1 else "Succeeded" }}</td>
+                    <td>{{ "Failed" if run.get('failed_trial') == 1 else "Succeeded" }}</td>
                     <td>{{ run.get('level') }}</td>
                     <td>{{ run.get('actual_time') if run.get('failed_trial') == 0 or run in [400,450,500] else 600}}</td>
                     <td class="fixed-columns">{{ applied_factors[loop.index - 1].get('applied_oms') }}</td>
