@@ -1,6 +1,18 @@
 # -*- coding: utf-8; -*-
 
 import registry as r
+import json
+import logging
+
+logger = logging.getLogger('run.data')
+
+fh = logging.FileHandler('run_logs.log')
+fh.setLevel(logging.INFO)
+
+FORMAT = "%(message)s"
+logging.basicConfig(format=FORMAT, level=logging.INFO)
+
+logger.addHandler(fh)
 
 class Runs(object):
     @staticmethod
@@ -136,6 +148,12 @@ class Runs(object):
             'robot_id': robot_id 
         }
         r.get_registry()['MY_SQL'].insert(query, data)
+
+        json_data = {}
+
+        json_data[robot_id] = data
+
+        logger.info(json.dumps(json_data))
 
     @staticmethod
     def get_runs_robot_level(robot_id, level):
