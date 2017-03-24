@@ -7,7 +7,7 @@ from libraries.my_sql_connection import MySQLConnection
 from raven import Client
 from libraries.repositories.robots import Robots
 from libraries.repositories.runs import Runs
-
+from constants import settings
 
 def load_registry():
     """ Initialize and load the global registry
@@ -23,7 +23,9 @@ def load_registry():
 
 
 def init_mysql(r):
-    r['MY_SQL'] = MySQLConnection()
+    r['MY_SQL'] = MySQLConnection(
+	user=settings.mysql_user,
+	passwd=settigs.mysql_password)
 
 
 def init_redis(r):
