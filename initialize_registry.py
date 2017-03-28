@@ -25,7 +25,7 @@ def load_registry():
 def init_mysql(r):
     r['MY_SQL'] = MySQLConnection(
 	user=settings.mysql_user,
-	passwd=settigs.mysql_password)
+	passwd=settings.mysql_password)
 
 
 def init_redis(r):

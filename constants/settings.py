@@ -18,8 +18,8 @@ ALLOWED_ADMINS = [
     'robotics.scoring.test@gmail.com'
 ]
 
-CLIENT_ID = '904731183016-rhpk64herjjr80mgufhmghs9f88c57v7.apps.googleusercontent.com'  # NOQA
-CLIENT_SECRET = 'gIHijtxmhPqItaZLUtQOHCq4'
+CLIENT_ID = '467121926761-fnm5ttdjaipgn1tfnjp8ngouecge7moj.apps.googleusercontent.com'
+CLIENT_SECRET = 'U-5eSl_xXvS9k4lQehWl0KOB'
 OAUTH2_SCOPE = ('https://www.googleapis.com/auth/userinfo.profile',
                 'https://www.googleapis.com/auth/userinfo.email')
 PROFILE_URI = 'https://www.googleapis.com/oauth2/v1/userinfo'
