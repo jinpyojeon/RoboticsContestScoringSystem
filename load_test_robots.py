@@ -14,14 +14,14 @@ def get_id(id_counter, robot_data):
 def run():
     load_registry()
     division_map = {
-        'fire fighting high school division': 'high_school',
-        'fire fighting junior division': 'junior',
-        'fire fighting senior division': 'senior',
-        'fire fighting walking division': 'walking'
+        'high school': 'high_school',
+        'junior': 'junior',
+        'senior': 'senior',
+        'walking': 'walking'
     }
     unique_map = {
         'unique': True,
-        'customized': False,
+        'custom kit': False,
         'i am not sure': False
     }
     versa_valve_map = {
@@ -29,13 +29,13 @@ def run():
         'no': False
     }
     fields_index = {
-        'division': 3,
-        'name': 4,
-        'unique': 5,
+        'division': 0,
+        'name': 1,
+        'unique': 3,
         'versa_valve': 6,
-        'school': 7
+        'school': 2
     }
-    with open('robot_list.csv', 'rb') as csvfile:
+    with open('robot_list_2017.csv', 'rb') as csvfile:
         spamreader = csv.reader(csvfile)
         i = 0
         id_counter = {
@@ -45,7 +45,8 @@ def run():
             'junior': 1
         }
         for row in spamreader:
-            if i == 0:
+            # skip first three lines
+            if i <= 2:
                 i += 1
                 continue
             i += 1
@@ -58,8 +59,6 @@ def run():
                     d[field] = division_map[row[index].strip().lower()]
                 elif field == 'unique':
                     d[field] = unique_map[row[index].strip().lower()]
-                elif field == 'versa_valve':
-                    d[field] = versa_valve_map[row[index].strip().lower()]
                 else:
                     d[field] = row[index]
             d['id'] = get_id(id_counter, d)
@@ -70,7 +69,7 @@ def run():
                 school=d['school'],
                 name=d['name'],
                 is_unique=d['unique'],
-                used_versa_valve=d['versa_valve'],
+                used_versa_valve=False,
                 level=1,
                 is_disqualified=False,
                 passed_inspection=False
